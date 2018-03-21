@@ -27,10 +27,10 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
             } else if (!(newMember.selfDeaf && newMember.selfMute) && oldMember.selfDeaf) {
                 notification(newMember.user.username, messages.undeafed)
             }
-        } else if (checkExist(oldMember) && newMember.voiceChannel === undefined) {
-            // Leave            
-            notification(oldMember.user.username, messages.leaved)
         }
+    } else if (checkExist(oldMember) && newMember.voiceChannel === undefined) {
+        // Leave            
+        notification(oldMember.user.username, messages.leaved)
     }
 });
 
