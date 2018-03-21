@@ -1,6 +1,8 @@
 const Discord = require('discord.js')
 const client = new Discord.Client()
 const notifier = require('node-notifier');
+
+// Config
 const token = require('./token.json').token;
 const messages = require('./package.json').notification.message;
 

@@ -2,7 +2,7 @@
 
 # Requirments
 
-token.json
+`token.json`
 
 SELFBOT-TOKEN: https://github.com/TheRacingLion/Discord-SelfBot/wiki/Discord-Token-Tutorial
 
