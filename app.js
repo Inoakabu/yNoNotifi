@@ -36,7 +36,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
 
 function checkExist(user) {
     const selfTest = user.user.id !== client.user.id
-    return !selfTest && user.voiceChannel !== undefined && user.voiceChannel.id === USER_CHANNEL_ID
+    return selfTest && user.voiceChannel !== undefined && user.voiceChannel.id === USER_CHANNEL_ID
 }
 
 function findUser(user) {
