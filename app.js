@@ -27,16 +27,16 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
             } else if (!(newMember.selfDeaf && newMember.selfMute) && oldMember.selfDeaf) {
                 notification(newMember.user.username, messages.undeafed)
             }
-        } else if (checkExist(oldMember) && newMember.voiceChannel === undefined) {
-            // Leave            
-            notification(oldMember.user.username, messages.leaved)
         }
+    } else if (checkExist(oldMember) && newMember.voiceChannel === undefined) {
+        // Leave            
+        notification(oldMember.user.username, messages.leaved)
     }
 });
 
 function checkExist(user) {
     const selfTest = user.user.id !== client.user.id
-    return !selfTest && user.voiceChannel !== undefined && user.voiceChannel.id === USER_CHANNEL_ID
+    return selfTest && user.voiceChannel !== undefined && user.voiceChannel.id === USER_CHANNEL_ID
 }
 
 function findUser(user) {
