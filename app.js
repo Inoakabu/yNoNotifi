@@ -15,23 +15,27 @@ let USER_CHANNEL_ID = undefined
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
     if (newMember !== undefined) {
+        //
+        // Init the User Channel
         if (findUser(newMember)) {
             USER_CHANNEL_ID = newMember.voiceChannel.id
+            console.log('USER_CHANNEL_ID_CHANGED', USER_CHANNEL_ID)
         }
-        if (checkExist(newMember)) {
-            // Join
-            if (newMember.voiceChannel.id !== oldMember.voiceChannel.id || oldMember === undefined) {
-                notification(newMember.user.username, messages.entered)
-            }
-            // Deaf
-            if ((newMember.selfDeaf && newMember.selfMute) && !oldMember.selfDeaf) {
-                notification(newMember.user.username, messages.deafed)
-            } else if (!(newMember.selfDeaf && newMember.selfMute) && oldMember.selfDeaf) {
-                notification(newMember.user.username, messages.undeafed)
-            }
+        //
+        // Join
+        if (newMember.voiceChannel.id !== oldMember.voiceChannel.id || oldMember === undefined) {
+            notification(newMember.user.username, messages.entered)
+        }
+        //
+        // Deaf and Undeaf
+        if ((newMember.selfDeaf && newMember.selfMute) && !oldMember.selfDeaf) {
+            notification(newMember.user.username, messages.deafed)
+        } else if (!(newMember.selfDeaf && newMember.selfMute) && oldMember.selfDeaf) {
+            notification(newMember.user.username, messages.undeafed)
         }
     } else if (checkExist(oldMember) && newMember.voiceChannel === undefined) {
-        // Leave            
+        //
+        // Leave
         notification(oldMember.user.username, messages.leaved)
     }
 });
