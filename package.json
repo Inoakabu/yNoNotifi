@@ -1,0 +1,22 @@
+{
+    "name": "yNoNotifi",
+    "version": "0.0.1",
+    "dependencies": {
+        "discord.js": "^11.3.2",
+        "node-notifier": "^5.2.1"
+    },
+    "scripts": {
+        "start": "node app.js"
+    },
+    "bin": {
+        "yNoNotifi": "./app.js"
+    },
+    "notification": {
+        "message": {
+            "entered": "Joined the Channel",
+            "leaved": "Leaved the Channel",
+            "deafed": "is deafed.",
+            "undeafed": "is undeafed."
+        }
+    }
+}
