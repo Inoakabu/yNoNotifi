@@ -14,7 +14,7 @@ client.on('ready', () => {
 let USER_CHANNEL_ID = undefined
 
 client.on('voiceStateUpdate', (oldMember, newMember) => {
-    if (newMember !== undefined) {
+    if (newMember.voiceChannel !== undefined) {
         //
         // Init the User Channel
         if (findUser(newMember)) {
@@ -24,7 +24,7 @@ client.on('voiceStateUpdate', (oldMember, newMember) => {
         if (checkExist(newMember)) {
             //
             // Join
-            if (newMember.voiceChannel.id !== oldMember.voiceChannel.id || oldMember === undefined) {
+            if (oldMember.voiceChannel === undefined || newMember.voiceChannel.id !== oldMember.voiceChannel.id) {
                 notification(newMember.user.username, messages.entered)
             }
             //
